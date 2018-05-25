@@ -4,27 +4,26 @@ import javax.validation.constraints.NotEmpty;
 
 public class DecorForm {
 	private int id;
-	private String nom;
-	private int prix;
+	private String name;
+	private int price;
 	private String description;
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getPrix() {
-		return prix;
+	public int getPrice() {
+		return price;
 	}
-	public void setPrix(int prix) {
-		this.prix = prix;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getDescription() {
 		return description;
@@ -32,4 +31,6 @@ public class DecorForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
 }
