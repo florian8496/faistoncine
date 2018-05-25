@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="ISO-8859-1">
 
@@ -12,7 +12,7 @@
 
 	<h1 align="center">Decors</h1>
 
-	
+
 <div class="container" align="center">
 <table class="table table-hover">
   <thead>
@@ -25,24 +25,24 @@
   </thead>
   <tbody>
     <tr class="table-active">
-      <th scope="row"><input type="checkbox"></th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><input type="radio" name="radiobouton"></th>
+      <td>decor 1</td>
+      <td>100</td>
+      <td>geghthtyrhrtyhtry</td>
       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
     </tr>
     <tr>
-      <th scope="row"><input type="checkbox"></th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><input type="radio" name="radiobouton"></th>
+      <td>decor 2</td>
+      <td>200</td>
+      <td>htrhtrhtrhg</td>
       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
     </tr>
     <tr class="table-primary">
-      <th scope="row"><input type="checkbox"></th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><input type="radio" name="radiobouton"></th>
+      <td>decor 3</td>
+      <td>300</td>
+      <td>hrtjytjytjtyt</td>
       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
     </tr>
   </tbody>
@@ -54,8 +54,8 @@
 
 </div>
 
-<form id="FormAjout" th:action="@{/decor/add}"
-			method="post" enctype="multipart/form-data" th:object="${decorForm}">
+<form id="FormAjout">
+	<div class="container" align="center">
   <div class="form-group">
     <label for="nom">Nom</label>
     <input type="text" class="form-control" id="nom">
@@ -101,8 +101,9 @@ FormEdit.style.display = 'none';
 function ajout(){
 	FormAjout.style.display = 'block';
 	FormEdit.style.display = 'none';
-}
 
+	//if (FormAjout.style.display = 'block') {FormAjout.style.display = 'none';}
+}
 
 function edit(){
 	FormEdit.style.display = 'block';
