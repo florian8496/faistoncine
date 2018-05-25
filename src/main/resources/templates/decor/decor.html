@@ -2,9 +2,65 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+<title>Decor</title>
 </head>
 <body>
-test fe
+
+	<h1 align="center">Decors</h1>
+
+<div class="container" align="center">
+	<div class="list-group">
+  		<button type="button" class="list-group-item list-group-item-action">Cras justo odio</button>
+  		<button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+  		<button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+  		<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+  		<button type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
+	</div>
+	<br><br><br>
+	<button type="button" class="btn btn-success" onclick="ajout()">Ajouter</button>
+	<button type="button" class="btn btn-danger">Supprimer</button>
+	<button type="button" class="btn btn-primary">Editer</button>
+
+</div>
+
+<form id="FormAjout">
+  <div class="form-group">
+    <label for="nom">Nom</label>
+    <input type="text" class="form-control" id="nom">
+  </div>
+   <div class="form-group">
+    <label for="nom">Prix</label>
+    <input type="text" class="form-control" id="Prix">
+  </div>
+  <div class="form-group">
+    <label for="Description">Description</label>
+    <textarea class="form-control" id="Description" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Ajouter decor</button>
+</form>
+
+<script type="text/javascript">
+	
+var FormAjout = document.getElementById("FormAjout")
+FormAjout.style.display = 'none'
+
+function ajout(){
+	FormAjout.style.display = 'block'
+}
+
+</script>
+
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 </body>
 </html>
