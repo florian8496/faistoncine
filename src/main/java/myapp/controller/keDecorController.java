@@ -17,22 +17,22 @@ import myapp.model.Scenario;
 import myapp.repository.DecorRepository;
 
 @Controller
-public class DecorController {
+public class keDecorController {
 	
 	@Autowired
 	DecorRepository decorRepository;
 	
-	@GetMapping("decor/decor")
+	@GetMapping("decor/list")
 	public String list(Model model) {
 		model.addAttribute("decorList", decorRepository.findAll());
 		model.addAttribute("decorForm", new DecorForm());
-		return "decor/decor";
+		return "decor/list";
 	}
 	
 	@GetMapping("/decor/{id}")
 	public String show(Model model, @PathVariable Long id) {
 			model.addAttribute("decor", decorRepository.findById(id));
-			return "decor/decor";
+			return "decor/list";
 	}
 	
 //	@PostMapping("/decor/edit")
@@ -61,10 +61,10 @@ public class DecorController {
 				@Valid Decor decor,
 				BindingResult result) {
 			if (result.hasErrors()) {
-	            return "decor/decor";
+	            return "decor/list";
 	        }
 			else {
-	      // Create a new scenario with automatic id generated
+	      // Create a new decor with automatic id generated
 				Decor d = new Decor();
 	      // Update decor d:
 				d.setName(decor.getName());
@@ -73,7 +73,7 @@ public class DecorController {
 	      // Save decor edited:
 				decorRepository.save(d);
 		      // Return to the list of decor
-		      return "redirect:/decor";
+		      return "redirect:/decor/list";
 			}
 	}
 
