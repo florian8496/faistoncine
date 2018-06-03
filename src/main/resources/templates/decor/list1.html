@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 
 <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
 
 <title>Decor</title>
 </head>
@@ -13,114 +16,129 @@
 	<h1 align="center">Decors</h1>
 
 
-<div class="container" align="center">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table-active">
-      <th scope="row"><input type="radio" name="radiobouton"></th>
-      <td>decor 1</td>
-      <td>100</td>
-      <td>geghthtyrhrtyhtry</td>
-      <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
-    </tr>
-    <tr>
-      <th scope="row"><input type="radio" name="radiobouton"></th>
-      <td>decor 2</td>
-      <td>200</td>
-      <td>htrhtrhtrhg</td>
-      <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
-    </tr>
-    <tr class="table-primary">
-      <th scope="row"><input type="radio" name="radiobouton"></th>
-      <td>decor 3</td>
-      <td>300</td>
-      <td>hrtjytjytjtyt</td>
-      <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td>
-    </tr>
-  </tbody>
-</table>
-
-	<br><br><br>
-	<button type="button" class="btn btn-success" onclick="ajout()">Ajouter</button>
-	<button type="button" class="btn btn-danger" onclick="suppression()">Supprimer</button>
-
-</div>
-
-<form id="FormAjout" th:action="@{/decor/add}"
-			method="post" enctype="multipart/form-data" th:object="${decor}">
 	<div class="container" align="center">
-  <div class="form-group">
-    <label for="nom">Nom</label>
-    <input type="text" class="form-control" id="nom">
-  </div>
-   <div class="form-group">
-    <label for="nom">Prix</label>
-    <input type="text" class="form-control" id="Prix">
-  </div>
-  <div class="form-group">
-    <label for="Description">Description</label>
-    <textarea class="form-control" id="Description" rows="3"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Ajouter decor</button>
-  </div>
-</form>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="decor : ${decorList}">
+					<td th:text="${decor.name}"></td>
+					<td th:text="${decor.price}"></td>
+					<td th:text="${decor.description}"></td>
+				</tr>
+				<!--     <tr class="table-active"> -->
+				<!--       <th scope="row"><input type="radio" name="radiobouton"></th> -->
+				<!--       <td>decor 1</td> -->
+				<!--       <td>100</td> -->
+				<!--       <td>geghthtyrhrtyhtry</td> -->
+				<!--       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td> -->
+				<!--     </tr> -->
+				<!--     <tr> -->
+				<!--       <th scope="row"><input type="radio" name="radiobouton"></th> -->
+				<!--       <td>decor 2</td> -->
+				<!--       <td>200</td> -->
+				<!--       <td>htrhtrhtrhg</td> -->
+				<!--       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td> -->
+				<!--     </tr> -->
+				<!--     <tr class="table-primary"> -->
+				<!--       <th scope="row"><input type="radio" name="radiobouton"></th> -->
+				<!--       <td>decor 3</td> -->
+				<!--       <td>300</td> -->
+				<!--       <td>hrtjytjytjtyt</td> -->
+				<!--       <td><button type="button" class="btn btn-primary" onclick="edit()">Editer</button></td> -->
+				<!--     </tr> -->
+			</tbody>
+		</table>
 
-<form id="FormEdit" th:action="@{/decor/edit}"
-			method="post" enctype="multipart/form-data" th:object="${decor}">
-<div class="container" align="center">
-  <div class="form-group">
-    <label for="nom">Nom</label>
-    <input type="text" class="form-control" id="nom">
-  </div>
-   <div class="form-group">
-    <label for="nom">Prix</label>
-    <input type="text" class="form-control" id="Prix">
-  </div>
-  <div class="form-group">
-    <label for="Description">Description</label>
-    <textarea class="form-control" id="Description" rows="3"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Modifier decor</button>
-  </div>
-</form>
+		<br>
+		<br>
+		<br>
+		<button type="button" class="btn btn-success" onclick="ajout()">Ajouter</button>
+		<button type="button" class="btn btn-danger" onclick="suppression()">Supprimer</button>
 
-<script type="text/javascript">
-	
-var FormAjout = document.getElementById("FormAjout");
-var FormEdit = document.getElementById("FormEdit");
+	</div>
 
-FormAjout.style.display = 'none';
-FormEdit.style.display = 'none';
+	<form id="FormAjout" th:action="@{/decor/add}" method="post"
+		enctype="multipart/form-data" th:object="${decorForm}">
+		<div class="container" align="center">
+			<div class="form-group">
+				<label for="nom">Nom</label> <input type="text" class="form-control"
+					id="nom">
+			</div>
+			<div class="form-group">
+				<label for="nom">Prix</label> <input type="text"
+					class="form-control" id="Prix">
+			</div>
+			<div class="form-group">
+				<label for="Description">Description</label>
+				<textarea class="form-control" id="Description" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary mb-2">Ajouter
+				decor</button>
+		</div>
+	</form>
 
-function ajout(){
-	FormAjout.style.display = 'block';
-	FormEdit.style.display = 'none';
+	<form id="FormEdit" th:action="@{/decor/edit}" method="post"
+		enctype="multipart/form-data" th:object="${decor}">
+		<div class="container" align="center">
+			<div class="form-group">
+				<label for="nom">Nom</label> <input type="text" class="form-control"
+					id="nom">
+			</div>
+			<div class="form-group">
+				<label for="nom">Prix</label> <input type="text"
+					class="form-control" id="Prix">
+			</div>
+			<div class="form-group">
+				<label for="Description">Description</label>
+				<textarea class="form-control" id="Description" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary mb-2">Modifier
+				decor</button>
+		</div>
+	</form>
 
-	//if (FormAjout.style.display = 'block') {FormAjout.style.display = 'none';}
-}
+	<script type="text/javascript">
+		var FormAjout = document.getElementById("FormAjout");
+		var FormEdit = document.getElementById("FormEdit");
 
-function edit(){
-	FormEdit.style.display = 'block';
-	FormAjout.style.display = 'none';
-}
+		FormAjout.style.display = 'none';
+		FormEdit.style.display = 'none';
 
-</script>
+		function ajout() {
+			FormAjout.style.display = 'block';
+			FormEdit.style.display = 'none';
+
+			//if (FormAjout.style.display = 'block') {FormAjout.style.display = 'none';}
+		}
+
+		function edit() {
+			FormEdit.style.display = 'block';
+			FormAjout.style.display = 'none';
+		}
+	</script>
 
 
 
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
